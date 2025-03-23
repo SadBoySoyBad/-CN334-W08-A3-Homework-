@@ -17,6 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from ecommerce import views as ecom_views
+from ecommerce import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("ecommerce/", ecom_views.ecommerce_index_view),
+    path('user/<str:username>/', views.get_user, name='get_user'),
+    path('product/all/', views.get_all_products, name='get_all_products'),
+    path('product/byId/<int:id>/', views.get_product_by_id, name='get_product_by_id'),
+    path('comment/byProductId/<int:id>/', views.get_comments_by_product, name='get_comments_by_product'),
+    path('summarize/', views.summarize, name='summarize'),
 ]
